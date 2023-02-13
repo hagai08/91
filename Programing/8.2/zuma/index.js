@@ -1,6 +1,7 @@
 const DOM = {
   emailInput: null,
   numberOfSeats: null,
+  allergens: null,
   ordersTableBody: null,
 };
 
@@ -9,6 +10,7 @@ let orders = [];
 function init() {
   DOM.emailInput = document.querySelector("#orderEmail");
   DOM.numberOfSeats = document.querySelector("#numberOfSeats");
+  DOM.allergens = document.querySelector("#allergens");
   DOM.ordersTableBody = document.querySelector("#ordersTable tbody");
   //   making onclick="addNNewOrder()" from JS:
   //   const addNewOrderButton = document.getElementById("addNewOrderButton");
@@ -21,18 +23,22 @@ function init() {
   function addNewOrderFn(event) {
     // console.log(event); // event
     // console.log(this); // button!
-    orders.push(new Order(DOM.emailInput.value, DOM.numberOfSeats.value));
+    orders.push(new Order(DOM.emailInput.value, DOM.numberOfSeats.value, DOM.allergens.value));
     draw(orders);
     clearForm();
   }
 }
+
 function clearForm() {
   DOM.emailInput.value = "";
   DOM.numberOfSeats.value = "";
+  DOM.allergens.value = "";
 }
+
 function clearTableFn() {
   DOM.ordersTableBody.innerHTML = "";
 }
+
 function draw(ordersArray) {
   if (Array.isArray(ordersArray) === false) return;
   // document.createElement!
@@ -51,6 +57,9 @@ function draw(ordersArray) {
     tdEmail.innerText = currentOrder.email;
     // create numberOfSeats column
     const tdNumberOfSeats = getNumberOfSeatsTD(currentOrder.numberOfSeats);
+    // create allergans column
+    const tdAllergens = getAllergens(currentOrder.allergies);
+
     // create Button column
     const tdActions = document.createElement("td");
     const buttonDelete = document.createElement("button");
@@ -62,9 +71,45 @@ function draw(ordersArray) {
       draw(orders);
     });
 
-    tableRow.append(tdOrderId, tdEmail, tdNumberOfSeats, tdActions); // tr>td,td,td,td
+    // create Edit Button coulmn
+    const tdEdit = document.createElement("td");
+    const buttonEdit = document.createElement("button");
+    buttonEdit.classList.add("btn", "btn-info");
+    buttonEdit.innerText = "E";
+    tdEdit.append(buttonEdit);
+    buttonEdit.addEventListener("click", function () {
+      
+      var edit = orders[index];
+      edit.email = "HagaiAricha@";
+
+      orders[index] = edit;
+      draw(orders);
+    });
+
+    tableRow.append(tdOrderId, tdEmail, tdNumberOfSeats, tdAllergens, tdActions, tdEdit); // tr>td,td,td,td
     DOM.ordersTableBody.append(tableRow); //table > tbody > tr
   }
+  function getAllergens(allergen)
+  {
+    //Add input check
+    
+    var dict = {
+      "Nuts" : "bi-1-circle-fill",
+      "Kashio" : "bi-2-circle-fill",
+      "Milk" : "bi-3-circle-fill",
+      "Gluten" : "bi-4-circle-fill",
+      "Eggs" : "bi-5-circle-fill",
+    }
+
+    const tdAllergen = document.createElement("td");
+
+    const alle = document.createElement("i");
+    alle.className = dict[allergen];
+    tdAllergen.append(alle);
+
+    return tdAllergen;
+  }
+
   function getNumberOfSeatsTD(numberOfSeats) {
     if (typeof numberOfSeats !== "number") return;
     const numberOfSeatsTd = document.createElement("td");
