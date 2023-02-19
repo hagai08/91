@@ -1,0 +1,19 @@
+
+.product-item {
+    display: flex !important;
+    justify-content: space-between;
+  }
+
+  .form-group{
+    -ms-flex-align: center;
+  }
+
+  body  {
+    background-image: url("assets/Image/cork.jpg");
+  }
+
+
+  #mainHeader{
+    text-align: center;
+
+  }

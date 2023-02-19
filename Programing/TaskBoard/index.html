@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+  <title>My Task Board</title>
+</head>
+
+<!-- <img src="./assets/Image/cork.jpg" alt="background-image"> -->
+
+<body>
+
+
+  <div class="container">
+    <div class="row">
+
+      <h1 id="mainHeader">Add Task</h1>
+      <div id="app">
+
+        <form style="background-color: #767e85; padding: 20px">
+          <div class="row">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Note Details</span>
+              <input id="noteDetails" type="text" class="form-control" placeholder="Note Details"
+                aria-label="noteDetails" aria-describedby="basic-addon1" />
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Date</span>
+              <input type="date" id="date" name="trip-start" value="2023-02-19" min="2018-01-01" max="2048-12-31">
+            </div>
+
+            <div class="input-group mb-3">
+
+              <span class="input-group-text" id="basic-addon1">Choose a time for your note:</span>
+
+              <input type="time" id="time" name="appt">
+            </div>
+
+
+
+            <br>
+            <button id="addNewOrderButton" type="button" class="btn btn-success">
+              <span> Add a  Note</span>
+
+            </button>
+
+            <button id="clearTable" type="button" class="btn btn-danger">
+              <span> Clear all Notes</span>
+            </button>
+
+        </form>
+
+        <div class="mt-2">
+          <div>
+            <h1 id="headerForTheTable">My Notes</h1>
+          </div>
+          <table id="ordersTable" class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Note Details</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <script src="./Note.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+
+</html>
