@@ -122,4 +122,6 @@ function draw(ordersArray) {
     return numberOfSeatsTd;
   }
 }
+
+
 init();

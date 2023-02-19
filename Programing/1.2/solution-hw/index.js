@@ -23,6 +23,7 @@ function getHighRatingMovies(arrayOfMovies, minRating) {
 const minRating = parseInt(prompt("give me minRating or ill shoot you!"));
 const result = getHighRatingMovies(globalFavorites, minRating);
 console.log("after min rating filter", result);
+
 function addNewMovie(favoritesMoviesLocal) {
   const movieName = prompt("Please Enter movie name");
   const movieRating = parseInt(prompt("Please Enter your rating"));

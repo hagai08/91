@@ -2,9 +2,12 @@ function init() {}
 
 init();
 
+var count = 0;
+
 function addMovie() {
   const movieName = document.getElementById("movieName");
   const movieRating = document.getElementById("movieRating");
+
   const mnValue = movieName.value;
   const mrValue = parseInt(movieRating.value);
   const newMovieListItem = document.createElement("li");
@@ -59,8 +62,15 @@ function getDeleteButton(id) {
 
 function changeColor() {
   const header = document.getElementById("mainHeader");
-  header.style.color = "red";
-  header.innerText = "Movies";
+  count++;
+  if (count % 2 == 0){
+    header.style.color = "red";
+  }
+  else{
+    header.style.color = "blue";
+  }
+
+  header.innerText = "Movies App";
 }
 
 function clearMovies() {
