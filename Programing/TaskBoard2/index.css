@@ -1,0 +1,14 @@
+body  {
+    background-image: url("assets/Image/cork.jpg");
+}
+
+.yahel{
+    background-image: url("assets/Image/notebook.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dlt{
+    height:10px;
+    width:10px;
+}
