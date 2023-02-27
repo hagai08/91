@@ -1,0 +1,86 @@
+
+body  {
+    background-image: url("assets/Image/cork.jpg");
+    background-repeat: no-repeat;
+    
+  
+}
+#myTaskBoard{
+  text-align: center;
+  font-family: 'Shantell Sans', cursive;
+  font-size: 60px;
+
+}
+
+@font-face {
+    font-family: instaFont;
+    src: url(./assets/Image/FontsFree-Net-Billabong.ttf);
+}
+/* .postBox{
+    border: 1px solid #909090;
+    border-radius: 20px;
+    margin-top: 30px;
+    overflow: hidden;
+} */
+
+.WritemyNote{ 
+    background-image: url("assets/Image/notebook.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 20px;
+    width: 700px;
+    
+    display: flex;
+    justify-content: left;
+    margin-left: 260px;
+   
+}
+.noteBookLine{
+    background-image: center;
+}
+
+.card-text{
+   word-wrap: break-word; 
+    font-family: 'Shantell Sans', cursive; 
+    overflow:auto 
+   
+}
+#blablabla{
+    width: 250px;
+    height: 250px;
+    word-wrap: break-word; 
+     background-color:yellow
+}
+
+
+
+.dlt{
+    word-wrap: break-word; 
+    height:10px;
+    width:10px;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #e8d614;
+}
+
+.card-body{
+    overflow:auto
+}
+
+
