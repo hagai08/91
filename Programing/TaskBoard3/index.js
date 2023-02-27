@@ -4,6 +4,10 @@ showNotes();
 let addBtn = document.getElementById("addBtn");
 addBtn.addEventListener("click", AddNote);
 
+let clearBtn = document.getElementById("clearBtn");
+clearBtn.addEventListener("click", clearAllNotes);
+
+
 function AddNote() {
 	let addTxt = document.getElementById("addTxt");
 	let date = document.getElementById("date");
@@ -18,9 +22,6 @@ function AddNote() {
 	addTxt.value = "";
 	showNotes();
 }
-
-let clearBtn = document.getElementById("clearBtn");
-clearBtn.addEventListener("click", clearAllNotes);
 
 function clearAllNotes() {
 	let notes = localStorage.getItem("notes");
