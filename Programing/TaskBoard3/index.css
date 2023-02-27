@@ -49,9 +49,15 @@ body  {
     width: 250px;
     height: 250px;
     word-wrap: break-word; 
-     background-color:yellow
+    background-color:yellow;
 }
 
+.fade-in-image { animation: fadeIn 2s; }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 
 .dlt{

@@ -42,51 +42,70 @@ function showNotes() {
 	let notes = localStorage.getItem("notes");
 	let notesObj = GetNotesObj(notes);
 
-	let html = "";
-	for (let index = 0; index < notesObj.length; index++) {
-		
-		const element = notesObj[index];
-		// console.log(element.text);
-		html += BuildNote(index, element);
-		
-	}
-
 	let notesElm = document.getElementById("notes");
 
-	if (notesObj.length != 0) notesElm.innerHTML = html;
-	else
+	if (notesObj.length == 0) 
+	{
 		notesElm.innerHTML = `Nothing to show!
 		Use "Add a Note" section above to add notes.`;
+	}
+	else
+	{
+		notesElm.innerHTML = "";
+
+		for (let index = 0; index < notesObj.length; index++) {
+		
+			const element = notesObj[index];
+			// console.log(element.text);
+			let note =  BuildNote(index, element);
+			notesElm.appendChild(note);
+		}
+	}
 }
 
 function BuildNote(index, element) {
-	return `<div class="noteCard my-2 mx-2 card"
-	               id="blablabla">
-				  		<div id="dlt">
-						<button id="${index}" onclick=
-							"deleteNote(this.id)"
-							class="btn btn-primary">
-							X
-						</button>
-						</div>
-					  <div class="card-body">
-						  <h5 class="card-title">
-							  Note ${index + 1}
-						  </h5>
-						  <div class="bla">
-
-						  <p class="card-text">
-							  ${element.text}
-							  <br>
-							  <br>
-							  ${element.date}
-							  <br>
-							  ${element.time}
-						  </p> 
-						  </div>
-				  </div>
-			  </div>`;
-}
+	const noteDiv = document.createElement("div");
+	noteDiv.classList.add("fade-in-image");
+  
+	const noteCardDiv = document.createElement("div");
+	noteCardDiv.classList.add("noteCard", "my-2", "mx-2", "card");
+	noteCardDiv.id = "blablabla";
+  
+	const deleteButtonDiv = document.createElement("div");
+	deleteButtonDiv.id = "dlt";
+  
+	const deleteButton = document.createElement("button");
+	deleteButton.id = index;
+	deleteButton.onclick = function() {
+	  deleteNote(this.id);
+	};
+	deleteButton.classList.add("btn", "btn-primary");
+	deleteButton.innerText = "X";
+  
+	const cardBodyDiv = document.createElement("div");
+	cardBodyDiv.classList.add("card-body");
+  
+	const cardTitle = document.createElement("h5");
+	cardTitle.classList.add("card-title");
+	cardTitle.innerText = `Note ${index + 1}`;
+  
+	const blaDiv = document.createElement("div");
+	blaDiv.classList.add("bla");
+  
+	const cardText = document.createElement("p");
+	cardText.classList.add("card-text");
+	cardText.innerText = `${element.text}\n\n${element.date}\n${element.time}`;
+  
+	blaDiv.appendChild(cardText);
+	cardBodyDiv.appendChild(cardTitle);
+	cardBodyDiv.appendChild(blaDiv);
+	deleteButtonDiv.appendChild(deleteButton);
+	noteCardDiv.appendChild(deleteButtonDiv);
+	noteCardDiv.appendChild(cardBodyDiv);
+	noteDiv.appendChild(noteCardDiv);
+  
+	return noteDiv;
+  }
 
 // Function to delete a note
 function deleteNote(index) {
