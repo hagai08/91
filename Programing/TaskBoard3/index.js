@@ -20,7 +20,9 @@ function AddNote() {
 }
 
 let clearBtn = document.getElementById("clearBtn");
-clearBtn.addEventListener("click", function (e) {
+clearBtn.addEventListener("click", clearAllNotes);
+
+function clearAllNotes() {
 	let notes = localStorage.getItem("notes");
 
 	let notesObj = GetNotesObj(notes);
@@ -28,7 +30,7 @@ clearBtn.addEventListener("click", function (e) {
 
 	localStorage.setItem("notes", JSON.stringify(notesObj));
 	showNotes();
-});
+}
 
 function GetNotesObj(notes) {
 	if (notes == null)
