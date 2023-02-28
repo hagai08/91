@@ -20,7 +20,7 @@ function AddNote() {
 	localStorage.setItem("notes", JSON.stringify(notesObj));
 
 	addTxt.value = "";
-	showNotes();
+	showNotes(true);
 }
 
 function clearAllNotes() {
@@ -41,7 +41,7 @@ function GetNotesObj(notes) {
 }
 
 // Function to show elements from localStorage
-function showNotes() {
+function showNotes(addNote = false) {
 	let notes = localStorage.getItem("notes");
 	let notesObj = GetNotesObj(notes);
 
@@ -53,7 +53,7 @@ function showNotes() {
 
 		const element = notesObj[index];
 		// console.log(element.text);
-		let note = BuildNote(index, element);
+		let note = BuildNote(index, element, addNote, notesObj.length);
 		notesElm.appendChild(note);
 	}
 
@@ -67,10 +67,14 @@ function ClearNotesView(notesElm) {
 	notesElm.innerHTML = "";
 }
 
-function BuildNote(index, element) {
+function BuildNote(index, element, addNote = false, notesLength) {
 	const noteDiv = document.createElement("div");
-	noteDiv.classList.add("fade-in-image");
 
+	if (addNote && index == notesLength - 1){
+		noteDiv.classList.add("fade-in-image");
+	}
+
+	
 	const noteCardDiv = document.createElement("div");
 	noteCardDiv.classList.add("noteCard", "my-2", "mx-2", "card");
 	noteCardDiv.id = "blablabla";
