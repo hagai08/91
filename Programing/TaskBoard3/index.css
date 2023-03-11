@@ -65,6 +65,11 @@ body  {
     height:10px;
     width:10px;
 }
+
+/* .deleteButtonDiv{
+    display: none;
+} */
+
 /* width */
 ::-webkit-scrollbar {
     width: 7px;
